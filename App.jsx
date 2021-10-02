@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NiMapView from './src/NiMapView';
 import CoffeeProfile from './src/CoffeeProfile';
@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      <NiMapView setProfileVisible={setProfileVisible} />
+      <NiMapView setProfileVisible={setProfileVisible} profileVisible={profileVisible} />
       {profileVisible && <CoffeeProfile />}
       <StatusBar />
     </View>
