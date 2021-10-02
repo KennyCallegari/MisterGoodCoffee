@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const CoffeeDetails = () => (
+const CoffeeDetails = ({ selectedCoffee }) => (
   <View style={styles.profile}>
-    <Text>SKUUUU</Text>
+    <Text>{selectedCoffee.name}</Text>
+    <Text>{selectedCoffee.location.address}</Text>
+    <Text>{`espresso: ${selectedCoffee.prices.espresso} €`}</Text>
+    <Text>{`cappucino: ${selectedCoffee.prices.cappucino} €`}</Text>
   </View>
 );
 

@@ -4,13 +4,42 @@ import { StatusBar } from 'expo-status-bar';
 import CoffeeMap from './src/CoffeeMap';
 import CoffeeDetails from './src/CoffeeDetails';
 
+const coffeeList = [
+  {
+    id: '1',
+    name: 'Le Petit Larousse',
+    location: {
+      latitude: 48.8236,
+      longitude: 2.3026,
+      address: '18 Av. Pierre Larousse, 92240 Malakoff',
+    },
+    prices: {
+      espresso: 1.50,
+      cappucino: 3.50,
+    },
+  },
+  {
+    id: '2',
+    name: 'Le French Café',
+    location: {
+      latitude: 48.8209,
+      longitude: 2.3004,
+      address: '1 Av. Jules Ferry, 92240 Malakoff',
+    },
+    prices: {
+      espresso: 2.30,
+      cappucino: 4.50,
+    },
+  },
+];
+
 const App = () => {
-  const [profileVisible, setProfileVisible] = useState(false);
+  const [selectedCoffee, setSelectedCoffee] = useState(null);
 
   return (
     <View style={styles.container}>
-      <CoffeeMap setProfileVisible={setProfileVisible} profileVisible={profileVisible} />
-      {profileVisible && <CoffeeDetails />}
+      <CoffeeMap selectedCoffee={selectedCoffee} setSelectedCoffee={setSelectedCoffee} coffeeList={coffeeList} />
+      {selectedCoffee && <CoffeeDetails selectedCoffee={selectedCoffee} />}
       <StatusBar />
     </View>
   );

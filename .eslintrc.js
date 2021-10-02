@@ -20,10 +20,11 @@ module.exports = {
   ],
   rules: {
     'max-len': [2, 120],
+    'no-use-before-define': ['error', { functions: true, classes: true, variables: false }],
     'react/jsx-first-prop-new-line': [0],
     'react/prop-types': [0],
     'react/jsx-max-props-per-line': [0],
     'react/jsx-closing-bracket-location': [0],
-    'no-use-before-define': ['error', { functions: true, classes: true, variables: false }],
+    'object-curly-newline': [0],
   },
 };
