@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const App = () => (
+const CoffeeDetails = () => (
   <View style={styles.profile}>
     <Text>SKUUUU</Text>
   </View>
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default CoffeeDetails;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 
-const NiMapView = ({ profileVisible, setProfileVisible }) => {
+const CoffeeMap = ({ profileVisible, setProfileVisible }) => {
   const [region, setRegion] = useState({
     latitude: 48.823617869429725,
     longitude: 2.3026291945458346,
@@ -16,7 +16,7 @@ const NiMapView = ({ profileVisible, setProfileVisible }) => {
 
   const onPressMap = (props) => {
     console.log('map', props.nativeEvent);
-    if(profileVisible) setProfileVisible(false);
+    if (profileVisible) setProfileVisible(false);
   };
 
   return (
@@ -27,4 +27,4 @@ const NiMapView = ({ profileVisible, setProfileVisible }) => {
   );
 };
 
-export default NiMapView;
+export default CoffeeMap;
