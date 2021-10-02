@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NiMapView from './src/NiMapView';
+import CoffeeProfile from './src/CoffeeProfile';
 
 const App = () => {
   const [profileVisible, setProfileVisible] = useState(false);
@@ -9,11 +10,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <NiMapView setProfileVisible={setProfileVisible} />
-      {profileVisible && (
-        <View style={styles.profile}>
-          <Text>SKUUUU</Text>
-        </View>
-      )}
+      {profileVisible && <CoffeeProfile />}
       <StatusBar />
     </View>
   );
