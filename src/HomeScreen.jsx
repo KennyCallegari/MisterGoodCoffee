@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import CoffeeMap from './CoffeeMap';
 import CoffeeDetails from './CoffeeDetails';
 
@@ -40,7 +39,6 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <CoffeeMap selectedCoffee={selectedCoffee} setSelectedCoffee={setSelectedCoffee} coffeeList={coffeeList} />
       {selectedCoffee && <CoffeeDetails selectedCoffee={selectedCoffee} />}
-      <StatusBar />
     </View>
   );
 };
