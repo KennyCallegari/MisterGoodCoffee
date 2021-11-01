@@ -1,6 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
+import sku from '../assets/logo_tripadvisor.png';
+import skusku from '../assets/espresso.png';
+import Badge from './Badge';
+
+const windowWidth = Dimensions.get('window').width;
 
 const CoffeeDetails = ({ selectedCoffee }) => {
   const navigation = useNavigation();
@@ -11,11 +17,17 @@ const CoffeeDetails = ({ selectedCoffee }) => {
 
   return (
     <View style={styles.profile}>
-      <Text>{selectedCoffee.name}</Text>
-      <Text>{selectedCoffee.location.address}</Text>
-      <Text>{`espresso: ${selectedCoffee.prices.espresso} €`}</Text>
-      <Text>{`cappucino: ${selectedCoffee.prices.cappucino} €`}</Text>
-      <Button title="Voir les détails" onPress={goToProfile} />
+      <View style={styles.title}>
+        <Text style={styles.name}>{selectedCoffee.name}</Text>
+        <Text style={styles.address}>{selectedCoffee.location.address}</Text>
+      </View>
+      <View style={styles.badgesContainer}>
+        <Badge title="Espresso" number={`${selectedCoffee.prices.espresso} €`} source={skusku} />
+        <Badge title={selectedCoffee.reward.name} number={selectedCoffee.reward.score} source={sku} />
+      </View>
+      <TouchableOpacity style={styles.button} onPress={goToProfile}>
+        <Feather name="chevron-down" size={32} color="black" />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -26,8 +38,40 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     height: 200,
-    width: '100%',
-    backgroundColor: 'white',
+    width: '90%',
+    paddingTop: 12,
+    paddingHorizontal: 12,
+    marginLeft: windowWidth / 20,
+    marginBottom: 32,
+    borderRadius: 8,
+    borderWidth: 2,
+    backgroundColor: '#FFF5E9',
+    shadowColor: '#171717',
+    shadowOffset: { width: -2, height: 4 },
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
+  },
+  title: {
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  name: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  address: {
+    fontStyle: 'italic',
+  },
+  badgesContainer: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  button: {
+    color: 'black',
+    alignItems: 'center',
   },
 });
 

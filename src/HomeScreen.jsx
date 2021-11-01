@@ -16,6 +16,10 @@ const coffeeList = [
       espresso: 1.50,
       cappucino: 3.50,
     },
+    reward: {
+      name: 'Tripadvisor',
+      score: 4.5,
+    },
   },
   {
     id: '2',
@@ -28,6 +32,10 @@ const coffeeList = [
     prices: {
       espresso: 2.30,
       cappucino: 4.50,
+    },
+    reward: {
+      name: 'Tripadvisor',
+      score: 4.5,
     },
   },
 ];
