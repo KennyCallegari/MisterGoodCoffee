@@ -26,5 +26,6 @@ module.exports = {
     'react/jsx-max-props-per-line': [0],
     'react/jsx-closing-bracket-location': [0],
     'object-curly-newline': [0],
+    'global-require': [0],
   },
 };
