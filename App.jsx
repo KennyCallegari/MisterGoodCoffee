@@ -12,10 +12,7 @@ const App = () => {
   const [appReady, setAppReady] = useState(false);
 
   const fetchAssets = async () => {
-    const cachedImages = [
-      require('./assets/espresso.png'),
-      require('./assets/logo_tripadvisor.png'),
-    ];
+    const cachedImages = [require('./assets/espresso.png'), require('./assets/logo_tripadvisor.png')];
     const imageAssets = cachedImages.map((img) => Asset.fromModule(img).downloadAsync());
 
     await Promise.all([...imageAssets]);
