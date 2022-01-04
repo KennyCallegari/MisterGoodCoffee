@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, FlatList } from 'react-native';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, Platform, Linking, View, Text, TouchableOpacity, FlatList, Share } from 'react-native';
+import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import CoffeeMenuItem from './CoffeeMenuItem';
 import espressoSource from '../assets/carte_espresso.png';
 import cappuccinoSource from '../assets/carte_cappuccino.png';
@@ -15,6 +15,16 @@ const ProfileScreen = ({ route, navigation }) => {
   const { selectedCoffee } = route.params;
 
   console.log('selectedCoffee', selectedCoffee);
+
+  const getMapLink = () => {
+    const query = `${selectedCoffee.location.latitude},${selectedCoffee.location.longitude}`;
+    return Platform.OS === 'ios' ? `https://maps.apple.com/maps?q=${query}` : `https://maps.google.com/?q=${query}`;
+  };
+
+  const onShare = async () => {
+    const message = `${selectedCoffee.name} - ${getMapLink()}`;
+    await Share.share({ message });
+  };
 
   const selectSource = (drink) => {
     switch (drink) {
@@ -57,16 +67,21 @@ const ProfileScreen = ({ route, navigation }) => {
         </TouchableOpacity>
         <Text style={styles.title}>{selectedCoffee.name}</Text>
       </View>
-      <View>
-        <TouchableOpacity onPress={() => {}} style={{ margin: 12 }}>
-          <FontAwesome name="internet-explorer" size={24} color="black" />
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <TouchableOpacity onPress={onShare} style={styles.button}>
+          <Feather name="share" size={32} color="black" style={{ marginRight: 12 }} />
+          <Text style={{ fontSize: 16 }}>Partager</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => Linking.openURL(getMapLink())} style={styles.button}>
+          <MaterialCommunityIcons name="google-maps" size={32} color="black" style={{ marginRight: 8 }} />
+          <Text style={{ fontSize: 16 }}>Y aller</Text>
         </TouchableOpacity>
       </View>
       <View style={{ borderBottomWidth: 2, borderColor: 'black' }} />
       <View style={{ marginTop: 12 }}>
+        <Text style={styles.menuTitle}>MENU</Text>
         <FlatList data={Object.entries(selectedCoffee.prices)} numColumns={2} keyExtractor={(item, index) => index}
-          contentContainerStyle={{ borderWidth: 2, borderColor: 'black', paddingRight: 12, paddingBottom: 20 }}
-          renderItem={({ item }) => renderBadge(item)} />
+          contentContainerStyle={styles.menu} renderItem={({ item }) => renderBadge(item)} />
       </View>
       <View style={{ borderBottomWidth: 2, borderColor: 'black', marginTop: 12 }} />
     </View>
@@ -85,12 +100,32 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomWidth: 2,
     borderColor: 'black',
+    marginTop: 16,
   },
   title: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
+  },
+  button: {
+    margin: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingRight: 12,
+  },
+  menuTitle: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginBottom: 12,
+    marginTop: 20,
+  },
+  menu: {
+    borderWidth: 2,
+    borderColor: 'black',
+    borderRadius: 8,
+    paddingRight: 12,
+    paddingBottom: 20,
   },
   menuItem: {
     flex: 1 / 2,
