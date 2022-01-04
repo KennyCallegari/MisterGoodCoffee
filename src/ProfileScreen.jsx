@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform, Linking, View, Text, TouchableOpacity, FlatList, Share } from 'react-native';
+import { StyleSheet, Platform, Linking, View, Text, TouchableOpacity, FlatList, Share, Image, ScrollView, SafeAreaView } from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import CoffeeMenuItem from './CoffeeMenuItem';
 import espressoSource from '../assets/carte_espresso.png';
@@ -10,6 +10,8 @@ import cremeSource from '../assets/carte_creme.png';
 import doubleSource from '../assets/carte_double.png';
 import ristrettoSource from '../assets/carte_ristretto.png';
 import theSource from '../assets/carte_the.png';
+import veganSource from '../assets/vegan.png';
+import routardSource from '../assets/routard.png';
 
 const ProfileScreen = ({ route, navigation }) => {
   const { selectedCoffee } = route.params;
@@ -49,7 +51,7 @@ const ProfileScreen = ({ route, navigation }) => {
     }
   };
 
-  const renderBadge = (item) => {
+  const renderItem = (item) => {
     const [drink, price] = item;
     return (
       <View style={styles.menuItem}>
@@ -67,23 +69,31 @@ const ProfileScreen = ({ route, navigation }) => {
         </TouchableOpacity>
         <Text style={styles.title}>{selectedCoffee.name}</Text>
       </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-        <TouchableOpacity onPress={onShare} style={styles.button}>
-          <Feather name="share" size={32} color="black" style={{ marginRight: 12 }} />
-          <Text style={{ fontSize: 16 }}>Partager</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL(getMapLink())} style={styles.button}>
-          <MaterialCommunityIcons name="google-maps" size={32} color="black" style={{ marginRight: 8 }} />
-          <Text style={{ fontSize: 16 }}>Y aller</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{ borderBottomWidth: 2, borderColor: 'black' }} />
-      <View style={{ marginTop: 12 }}>
-        <Text style={styles.menuTitle}>MENU</Text>
-        <FlatList data={Object.entries(selectedCoffee.prices)} numColumns={2} keyExtractor={(item, index) => index}
-          contentContainerStyle={styles.menu} renderItem={({ item }) => renderBadge(item)} />
-      </View>
-      <View style={{ borderBottomWidth: 2, borderColor: 'black', marginTop: 12 }} />
+      <ScrollView>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <TouchableOpacity onPress={onShare} style={styles.button}>
+            <Feather name="share" size={32} color="black" style={{ marginRight: 12 }} />
+            <Text style={{ fontSize: 16 }}>Partager</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL(getMapLink())} style={styles.button}>
+            <MaterialCommunityIcons name="google-maps" size={32} color="black" style={{ marginRight: 8 }} />
+            <Text style={{ fontSize: 16 }}>Y aller</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{ borderBottomWidth: 2, borderColor: 'black' }} />
+        <View style={{ marginTop: 12 }}>
+          <Text style={styles.menuTitle}>MENU</Text>
+          <FlatList data={Object.entries(selectedCoffee.prices)} numColumns={2} keyExtractor={(item, index) => index}
+            contentContainerStyle={styles.menu} renderItem={({ item }) => renderItem(item)} scrollEnabled={false} />
+        </View>
+        <View style={{ borderBottomWidth: 2, borderColor: 'black', marginTop: 12 }} />
+        <Text style={styles.menuTitle}>TAGS</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          {selectedCoffee.tags.includes('vegan') && <Image style={{ width: 80, height: 80 }} source={veganSource} />}
+          {selectedCoffee.tags.includes('routard')
+            && <Image style={{ width: 72, height: 72 }} source={routardSource} />}
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -131,7 +141,6 @@ const styles = StyleSheet.create({
     flex: 1 / 2,
     marginTop: 24,
     alignItems: 'flex-end',
-    marginHorizontal: 8,
   },
 });
 

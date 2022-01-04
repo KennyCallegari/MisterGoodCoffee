@@ -23,6 +23,8 @@ const App = () => {
       require('./assets/carte_noisette.png'),
       require('./assets/carte_ristretto.png'),
       require('./assets/carte_the.png'),
+      require('./assets/vegan.png'),
+      require('./assets/routard.png'),
     ];
     const imageAssets = cachedImages.map((img) => Asset.fromModule(img).downloadAsync());
 

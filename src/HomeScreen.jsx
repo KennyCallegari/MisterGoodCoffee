@@ -21,6 +21,7 @@ const coffeeList = [
       name: 'Tripadvisor',
       score: 4.5,
     },
+    tags: ['vegan', 'routard'],
   },
   {
     id: '2',
@@ -44,6 +45,7 @@ const coffeeList = [
       name: 'Tripadvisor',
       score: 4.5,
     },
+    tags: ['vegan'],
   },
 ];
 
