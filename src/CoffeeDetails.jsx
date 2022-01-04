@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
-import sku from '../assets/logo_tripadvisor.png';
-import skusku from '../assets/espresso.png';
+import tripAdvisorSource from '../assets/logo_tripadvisor.png';
+import espressoLogoSource from '../assets/espresso.png';
 import Badge from './Badge';
 
 const windowWidth = Dimensions.get('window').width;
@@ -12,7 +12,7 @@ const CoffeeDetails = ({ selectedCoffee }) => {
   const navigation = useNavigation();
 
   const goToProfile = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('Profile', { selectedCoffee });
   };
 
   return (
@@ -22,8 +22,8 @@ const CoffeeDetails = ({ selectedCoffee }) => {
         <Text style={styles.address}>{selectedCoffee.location.address}</Text>
       </View>
       <View style={styles.badgesContainer}>
-        <Badge title="Espresso" number={`${selectedCoffee.prices.espresso} €`} source={skusku} />
-        <Badge title={selectedCoffee.reward.name} number={selectedCoffee.reward.score} source={sku} />
+        <Badge title="Espresso" number={`${selectedCoffee.prices.espresso} €`} source={espressoLogoSource} />
+        <Badge title={selectedCoffee.reward.name} number={selectedCoffee.reward.score} source={tripAdvisorSource} />
       </View>
       <TouchableOpacity style={styles.button} onPress={goToProfile}>
         <Feather name="chevron-down" size={32} color="black" />

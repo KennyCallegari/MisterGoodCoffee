@@ -14,7 +14,8 @@ const coffeeList = [
     },
     prices: {
       espresso: 1.50,
-      cappucino: 3.50,
+      cappuccino: 3.50,
+      the: 2.50,
     },
     reward: {
       name: 'Tripadvisor',
@@ -31,7 +32,13 @@ const coffeeList = [
     },
     prices: {
       espresso: 2.30,
-      cappucino: 4.50,
+      cappuccino: 4.50,
+      noisette: 2.40,
+      double: 4.50,
+      the: 3.80,
+      creme: 3.80,
+      chocolat: 3.80,
+      ristretto: 2.30,
     },
     reward: {
       name: 'Tripadvisor',
