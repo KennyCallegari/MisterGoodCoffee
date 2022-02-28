@@ -1,5 +1,16 @@
 import React from 'react';
-import { StyleSheet, Platform, Linking, View, Text, TouchableOpacity, FlatList, Share, Image, ScrollView, SafeAreaView } from 'react-native';
+import {
+  StyleSheet,
+  Platform,
+  Linking,
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Share,
+  Image,
+  ScrollView,
+} from 'react-native';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import CoffeeMenuItem from './CoffeeMenuItem';
 import espressoSource from '../assets/carte_espresso.png';
@@ -19,8 +30,10 @@ const ProfileScreen = ({ route, navigation }) => {
   console.log('selectedCoffee', selectedCoffee);
 
   const getMapLink = () => {
-    const query = `${selectedCoffee.location.latitude},${selectedCoffee.location.longitude}`;
-    return Platform.OS === 'ios' ? `https://maps.apple.com/maps?q=${query}` : `https://maps.google.com/?q=${query}`;
+    const query = selectedCoffee.location.address.split(' ').join('+');
+    return Platform.OS === 'ios'
+      ? `https://maps.apple.com/maps?address=${query}`
+      : `https://maps.google.com/?api=1&query=${query}`;
   };
 
   const onShare = async () => {

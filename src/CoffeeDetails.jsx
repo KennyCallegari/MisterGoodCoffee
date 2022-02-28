@@ -11,6 +11,14 @@ const windowWidth = Dimensions.get('window').width;
 const CoffeeDetails = ({ selectedCoffee }) => {
   const navigation = useNavigation();
 
+  const getOpeningHours = () => {
+    const today = new Date().getDay();
+    const dayHours = selectedCoffee.hours[today - 1];
+    if (dayHours.start === 'closed') return 'c\'est fermé aujourd\'hui !';
+
+    return `${dayHours.start} - ${dayHours.end}`;
+  };
+
   const goToProfile = () => {
     navigation.navigate('Profile', { selectedCoffee });
   };
@@ -20,6 +28,7 @@ const CoffeeDetails = ({ selectedCoffee }) => {
       <View style={styles.title}>
         <Text style={styles.name}>{selectedCoffee.name}</Text>
         <Text style={styles.address}>{selectedCoffee.location.address}</Text>
+        <Text style={styles.hours}>{getOpeningHours()}</Text>
       </View>
       <View style={styles.badgesContainer}>
         <Badge title="Espresso" number={`${selectedCoffee.prices.espresso} €`} source={espressoLogoSource} />
@@ -61,6 +70,9 @@ const styles = StyleSheet.create({
   },
   address: {
     fontStyle: 'italic',
+  },
+  hours: {
+    marginTop: 8,
   },
   badgesContainer: {
     flex: 1,
