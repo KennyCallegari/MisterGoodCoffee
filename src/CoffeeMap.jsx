@@ -3,8 +3,8 @@ import MapView, { Marker } from 'react-native-maps';
 
 const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList, userLocation }) => {
   const [region, setRegion] = useState({
-    latitude: 48.823617869429725,
-    longitude: 2.3026291945458346,
+    latitude: userLocation?.latitude || 48.823617869429725,
+    longitude: userLocation?.longitude || 2.3026291945458346,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   });
@@ -25,6 +25,10 @@ const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList, userLocation
 
   return (
     <MapView style={{ flex: 1 }} region={region} onRegionChangeComplete={(reg) => setRegion(reg)} onPress={onPressMap}>
+      {userLocation?.latitude && (
+      <Marker coordinate={{ latitude: userLocation?.latitude, longitude: userLocation?.longitude }}
+        identifier="userLocation" key="userLocation" pinColor="blue" title="VOUS ETES ICI" />
+      )}
       {renderMarkers()}
     </MapView>
   );

@@ -10,9 +10,11 @@ const HomeScreen = () => {
   const [selectedCoffee, setSelectedCoffee] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [locationPermited, setLocationPermited] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getUserLocation() {
+      setLoading(true);
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setLocationPermited(false);
@@ -20,8 +22,9 @@ const HomeScreen = () => {
       }
 
       const location = await Location.getCurrentPositionAsync({});
-      setUserLocation(location);
+      setUserLocation(location.coords);
       setLocationPermited(true);
+      setLoading(false);
     }
 
     getUserLocation();
@@ -40,6 +43,13 @@ const HomeScreen = () => {
             {'Pour ça, rendez vous dans vos réglages et accordez nous l\'accès à votre localisation.'
             + '\n\nPromis, on ne fera rien d\'autre que vous localiser pour vous proposer les cafés autour de vous.'}
           </Text>
+        </>
+      </NiModal>
+
+      <NiModal visible={loading}>
+        <>
+          <Text style={styles.title}>Veuillez patienter</Text>
+          <Text>On cherche votre position. Veuillez patienter un peu, ça sera bientôt prêt</Text>
         </>
       </NiModal>
     </View>
