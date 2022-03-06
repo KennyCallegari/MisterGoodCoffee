@@ -27,7 +27,7 @@ const HomeScreen = () => {
       setLoading(false);
     }
 
-    getUserLocation();
+    if (!userLocation) getUserLocation();
   }, []);
 
   return (
