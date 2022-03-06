@@ -13,8 +13,8 @@ const CoffeeDetails = ({ selectedCoffee }) => {
 
   const getOpeningHours = () => {
     const today = new Date().getDay();
-    const dayHours = selectedCoffee.hours[today - 1];
-    if (dayHours.start === 'closed') return 'c\'est fermé aujourd\'hui !';
+    const dayHours = selectedCoffee.hours.slice(today - 1)[0];
+    if (dayHours.start === 'closed') return 'C\'est fermé aujourd\'hui !';
 
     return `${dayHours.start} - ${dayHours.end}`;
   };
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   hours: {
+    fontWeight: 'bold',
     marginTop: 8,
   },
   badgesContainer: {

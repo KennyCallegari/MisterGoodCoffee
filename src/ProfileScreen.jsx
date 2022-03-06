@@ -33,7 +33,7 @@ const ProfileScreen = ({ route, navigation }) => {
     const query = selectedCoffee.location.address.split(' ').join('+');
     return Platform.OS === 'ios'
       ? `https://maps.apple.com/maps?address=${query}`
-      : `https://maps.google.com/?api=1&query=${query}`;
+      : `https://www.google.com/maps/search/?api=1&query=${query}`;
   };
 
   const onShare = async () => {
