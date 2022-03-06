@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MapView, { Marker } from 'react-native-maps';
 
-const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList }) => {
+const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList, userLocation }) => {
   const [region, setRegion] = useState({
     latitude: 48.823617869429725,
     longitude: 2.3026291945458346,
