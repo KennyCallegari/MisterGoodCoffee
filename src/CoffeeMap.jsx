@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import { FontAwesome } from '@expo/vector-icons';
 
-const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList, userLocation }) => {
-  const initialRegion = {
-    latitude: userLocation?.latitude || 48.823617869429725,
-    longitude: userLocation?.longitude || 2.3026291945458346,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
-  };
-  const [region, setRegion] = useState(initialRegion);
-
+const CoffeeMap = ({
+  selectedCoffee,
+  setSelectedCoffee,
+  coffeeList,
+  userLocation,
+  region,
+  onRegionChange,
+  resetToUserPosition,
+}) => {
   const onPressMarker = (props) => {
     console.log('marker', props.nativeEvent);
     setSelectedCoffee(coffeeList.find((coffee) => coffee.id === props.nativeEvent.id));
@@ -22,14 +22,12 @@ const CoffeeMap = ({ selectedCoffee, setSelectedCoffee, coffeeList, userLocation
     if (selectedCoffee) setSelectedCoffee(null);
   };
 
-  const resetToUserPosition = () => { setRegion(initialRegion); };
-
   const renderMarkers = () => coffeeList.map((coffee) => (
     <Marker coordinate={coffee.location} onPress={onPressMarker} identifier={coffee.id} key={coffee.id} />
   ));
 
   return (
-    <MapView style={{ flex: 1 }} region={region} onRegionChangeComplete={(reg) => setRegion(reg)} onPress={onPressMap}>
+    <MapView style={{ flex: 1 }} region={region} onRegionChangeComplete={onRegionChange} onPress={onPressMap}>
       {userLocation?.latitude && (
       <Marker coordinate={{ latitude: userLocation?.latitude, longitude: userLocation?.longitude }}
         identifier="userLocation" key="userLocation" pinColor="blue" title="VOUS ETES ICI" />
