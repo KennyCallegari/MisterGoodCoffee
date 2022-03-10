@@ -1,10 +1,13 @@
 {
   "expo": {
-    "name": "mister-good-coffee",
+    "name": "Mister Good Coffee",
     "slug": "mister-good-coffee",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "platforms": ["ios", "android"],
+    "primaryColor": "#E9D7C1",
+    "icon": "./assets/ios_icon.png",
+    "backgroundColor": "#FFFFFF",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "cover",
@@ -13,16 +16,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["assets/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": "./assets/ios_icon.png"
     },
     "android": {
+      "icon": "./assets/android_icon_old.png",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/android_icon.png",
+        "backgroundColor": "#E9D7C1"
       }
     },
     "web": {
