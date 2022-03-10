@@ -1,4 +1,5 @@
 import React from 'react';
+import chunk from 'lodash.chunk';
 import {
   StyleSheet,
   Platform,
@@ -6,7 +7,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  FlatList,
   Share,
   Image,
   ScrollView,
@@ -65,11 +65,22 @@ const ProfileScreen = ({ route, navigation }) => {
   };
 
   const renderItem = (item) => {
-    const [drink, price] = item;
+    const [drink1, price1] = item[0];
+
+    let [drink2, price2] = [null, null];
+    if (item[1]) {
+      const [drink, price] = item[1];
+      [drink2, price2] = [drink, price];
+    }
+
     return (
-      <View style={styles.menuItem}>
-        <CoffeeMenuItem number={`${price} €`} source={selectSource(drink)} size={{ width: 40, aspectRatio: 1.4 }}
-          title={drink} />
+      <View style={styles.menuItem} key={drink1}>
+        <CoffeeMenuItem number={`${price1} €`} source={selectSource(drink1)} size={{ width: 40, aspectRatio: 1.4 }}
+          title={drink1} />
+        {drink2 && (
+          <CoffeeMenuItem number={`${price2} €`} source={selectSource(drink2)} size={{ width: 40, aspectRatio: 1.4 }}
+            title={drink2} />
+        )}
       </View>
     );
   };
@@ -96,8 +107,9 @@ const ProfileScreen = ({ route, navigation }) => {
         <View style={{ borderBottomWidth: 2, borderColor: 'black' }} />
         <View style={{ marginTop: 12 }}>
           <Text style={styles.menuTitle}>MENU</Text>
-          <FlatList data={Object.entries(selectedCoffee.prices)} numColumns={2} keyExtractor={(item, index) => index}
-            contentContainerStyle={styles.menu} renderItem={({ item }) => renderItem(item)} scrollEnabled={false} />
+          <View style={styles.menu}>
+            {chunk(Object.entries(selectedCoffee.prices), 2).map((item) => renderItem(item))}
+          </View>
         </View>
         <View style={{ borderBottomWidth: 2, borderColor: 'black', marginTop: 12 }} />
         <Text style={styles.menuTitle}>TAGS</Text>
@@ -151,9 +163,10 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   menuItem: {
-    flex: 1 / 2,
-    marginTop: 24,
-    alignItems: 'flex-end',
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 16,
+    justifyContent: 'space-between',
   },
 });
 
