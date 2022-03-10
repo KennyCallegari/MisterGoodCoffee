@@ -1,16 +1,12 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 const CoffeeMap = ({
   selectedCoffee,
   setSelectedCoffee,
   coffeeList,
-  userLocation,
-  region,
-  onRegionChange,
-  resetToUserPosition,
+  initialRegion,
 }) => {
   const onPressMarker = (props) => {
     console.log('marker', props.nativeEvent);
@@ -27,38 +23,22 @@ const CoffeeMap = ({
   ));
 
   return (
-    <MapView style={{ flex: 1 }} region={region} onRegionChangeComplete={onRegionChange} onPress={onPressMap}>
-      {userLocation?.latitude && (
-      <Marker coordinate={{ latitude: userLocation?.latitude, longitude: userLocation?.longitude }}
-        identifier="userLocation" key="userLocation" pinColor="blue" title="VOUS ETES ICI" />
-      )}
+    <MapView style={styles.container} onPress={onPressMap} provider={PROVIDER_GOOGLE} showsUserLocation
+      followsUserLocation initialRegion={initialRegion} showsMyLocationButton showsCompass>
       {renderMarkers()}
-      <TouchableOpacity style={styles.findPositionButton} onPress={resetToUserPosition}>
-        <FontAwesome name="location-arrow" size={48} color="white" />
-      </TouchableOpacity>
     </MapView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    alignSelf: 'stretch',
+    height: '100%',
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 24,
-  },
-  findPositionButton: {
-    position: 'absolute',
-    bottom: 32,
-    right: 24,
-    width: 60,
-    height: 60,
-    borderRadius: 60 / 2,
-    backgroundColor: '#00000099',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 

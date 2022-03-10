@@ -19,6 +19,10 @@
     "assetBundlePatterns": ["assets/*"],
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.kennyCallegari.MisterGoodCoffee",
+      "config": {
+        "googleMapsApiKey": "AIzaSyC6T83G44a2Dy6XeCbULI--L_ujpGNdXqc"
+      },
       "icon": "./assets/ios_icon.png"
     },
     "android": {
