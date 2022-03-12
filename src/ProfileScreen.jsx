@@ -27,8 +27,6 @@ import routardSource from '../assets/routard.png';
 const ProfileScreen = ({ route, navigation }) => {
   const { selectedCoffee } = route.params;
 
-  console.log('selectedCoffee', selectedCoffee);
-
   const getMapLink = () => {
     const query = selectedCoffee.location.address.split(' ').join('+');
     return Platform.OS === 'ios'

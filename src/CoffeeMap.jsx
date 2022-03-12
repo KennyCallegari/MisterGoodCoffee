@@ -8,13 +8,16 @@ const CoffeeMap = ({
   coffeeList,
   initialRegion,
 }) => {
-  const onPressMarker = (props) => {
-    console.log('marker', props.nativeEvent);
-    setSelectedCoffee(coffeeList.find((coffee) => coffee.id === props.nativeEvent.id));
+  const onPressMarker = (event) => {
+    event.stopPropagation();
+
+    if (selectedCoffee && event.nativeEvent.id === selectedCoffee.id) return;
+
+    setSelectedCoffee(coffeeList.find((coffee) => coffee.id === event.nativeEvent.id));
   };
 
-  const onPressMap = (props) => {
-    console.log('map', props.nativeEvent);
+  const onPressMap = (event) => {
+    event.stopPropagation();
     if (selectedCoffee) setSelectedCoffee(null);
   };
 
