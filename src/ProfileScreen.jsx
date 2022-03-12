@@ -51,13 +51,13 @@ const ProfileScreen = ({ route, navigation }) => {
         return noisetteSource;
       case 'chocolat':
         return chocolatSource;
-      case 'creme':
+      case 'crème':
         return cremeSource;
       case 'double':
         return doubleSource;
       case 'ristretto':
         return ristrettoSource;
-      case 'the':
+      case 'thé':
         return theSource;
       default:
         return espressoSource;

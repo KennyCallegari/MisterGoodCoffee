@@ -10,7 +10,7 @@ export const coffeeList = [
     prices: {
       espresso: 1.50,
       cappuccino: 3.50,
-      the: 2.50,
+      thé: 2.50,
     },
     reward: {
       name: 'Tripadvisor',
@@ -61,8 +61,8 @@ export const coffeeList = [
       cappuccino: 4.50,
       noisette: 2.40,
       double: 4.50,
-      the: 3.80,
-      creme: 3.80,
+      thé: 3.80,
+      crème: 3.80,
       chocolat: 3.80,
       ristretto: 2.30,
     },
