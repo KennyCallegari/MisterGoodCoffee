@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Asset } from 'expo-asset';
 import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './src/HomeScreen';
@@ -41,6 +42,7 @@ const App = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
+      <StatusBar />
     </NavigationContainer>
   );
 };
