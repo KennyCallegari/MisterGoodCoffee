@@ -1,5 +1,6 @@
 import React from 'react';
 import chunk from 'lodash.chunk';
+import isEmpty from 'lodash.isempty';
 import {
   StyleSheet,
   Platform,
@@ -106,7 +107,9 @@ const ProfileScreen = ({ route, navigation }) => {
         <View style={{ marginTop: 12 }}>
           <Text style={styles.menuTitle}>MENU</Text>
           <View style={styles.menu}>
-            {chunk(Object.entries(selectedCoffee.prices), 2).map((item) => renderItem(item))}
+            {!isEmpty(selectedCoffee.prices)
+              ? <View>{chunk(Object.entries(selectedCoffee.prices), 2).map((item) => renderItem(item))}</View>
+              : <Text style={styles.emptyMenu}>{'Malheureusement, je n\'ai pas trouvé leur carte :('}</Text>}
           </View>
         </View>
         <View style={{ borderBottomWidth: 2, borderColor: 'black', marginTop: 12 }} />
@@ -165,6 +168,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 16,
     justifyContent: 'space-between',
+  },
+  emptyMenu: {
+    flex: 1,
+    marginTop: 16,
+    textAlign: 'center',
   },
 });
 

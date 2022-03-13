@@ -16,6 +16,7 @@ const App = () => {
     const cachedImages = [
       require('./assets/espresso.png'),
       require('./assets/logo_tripadvisor.png'),
+      require('./assets/logo_google.png'),
       require('./assets/carte_cappuccino.png'),
       require('./assets/carte_chocolat.png'),
       require('./assets/carte_creme.png'),

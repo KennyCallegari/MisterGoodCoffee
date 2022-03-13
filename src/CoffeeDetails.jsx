@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, Dimensions, TouchableOpacity } from 'react-nati
 import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import tripAdvisorSource from '../assets/logo_tripadvisor.png';
+import googleSource from '../assets/logo_google.png';
 import espressoLogoSource from '../assets/espresso.png';
 import Badge from './Badge';
 
@@ -31,8 +32,10 @@ const CoffeeDetails = ({ selectedCoffee }) => {
         <Text style={styles.hours}>{getOpeningHours()}</Text>
       </View>
       <View style={styles.badgesContainer}>
-        <Badge title="Espresso" number={`${selectedCoffee.prices.espresso} €`} source={espressoLogoSource} />
-        <Badge title={selectedCoffee.reward.name} number={selectedCoffee.reward.score} source={tripAdvisorSource} />
+        <Badge title="Espresso" source={espressoLogoSource}
+          number={selectedCoffee.prices.espresso ? `${selectedCoffee.prices.espresso} €` : '🤷‍♂️'} />
+        <Badge title={selectedCoffee.reward.name} number={selectedCoffee.reward.score}
+          source={selectedCoffee.reward.name === 'Google' ? googleSource : tripAdvisorSource} />
       </View>
       <TouchableOpacity style={styles.button} onPress={goToProfile}>
         <Feather name="chevron-down" size={32} color="black" />

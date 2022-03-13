@@ -1,6 +1,51 @@
 export const coffeeList = [
-  {
+  { // A côté
     id: '1',
+    name: 'A côté',
+    location: {
+      latitude: 48.88743758319952,
+      longitude: 2.3475180881197333,
+      address: '4 Rue Ramey, 75018 Paris',
+    },
+    prices: {},
+    reward: {
+      name: 'Google',
+      score: 4.2,
+    },
+    tags: [],
+    hours: [
+      {
+        start: 'closed',
+        end: 'closed',
+      },
+      {
+        start: 'closed',
+        end: 'closed',
+      },
+      {
+        start: '08:00',
+        end: '18:00',
+      },
+      {
+        start: '08:00',
+        end: '18:00',
+      },
+      {
+        start: '08:00',
+        end: '18:00',
+      },
+      {
+        start: '08:00',
+        end: '18:00',
+      },
+      {
+        start: '08:00',
+        end: '18:00',
+      },
+    ],
+  },
+  { // Le Petit Larousse
+    id: 'sku',
     name: 'Le Petit Larousse',
     location: {
       latitude: 48.8236,
@@ -48,8 +93,8 @@ export const coffeeList = [
       },
     ],
   },
-  {
-    id: '2',
+  { // Le French Café
+    id: 'skusku',
     name: 'Le French Café',
     location: {
       latitude: 48.8209,
