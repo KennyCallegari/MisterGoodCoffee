@@ -12,10 +12,10 @@ const HomeScreen = () => {
   const [userLocation, setUserLocation] = useState(null);
 
   const initialRegion = {
-    latitude: userLocation?.latitude || 48.823617869429725,
-    longitude: userLocation?.longitude || 2.3026291945458346,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
+    latitude: userLocation?.latitude || 48.85925169999999,
+    longitude: userLocation?.longitude || 2.3469933,
+    latitudeDelta: userLocation?.latitude ? 0.01 : 0.1,
+    longitudeDelta: userLocation?.longitude ? 0.01 : 0.1,
   };
 
   useEffect(() => {
