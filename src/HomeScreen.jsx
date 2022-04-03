@@ -4,6 +4,7 @@ import * as Location from 'expo-location';
 import CoffeeMap from './CoffeeMap';
 import CoffeeDetails from './CoffeeDetails';
 import { coffeeList } from './datas';
+import BuyMeACoffeeButton from './BuyMeACoffeeButton';
 
 const GEOLOCATION_OPTIONS = { accuracy: 3, distanceInterval: 10 };
 
@@ -35,6 +36,7 @@ const HomeScreen = () => {
       <CoffeeMap selectedCoffee={selectedCoffee} setSelectedCoffee={setSelectedCoffee} coffeeList={coffeeList}
         userLocation={userLocation} initialRegion={initialRegion} />
       {selectedCoffee && <CoffeeDetails selectedCoffee={selectedCoffee} />}
+      <BuyMeACoffeeButton />
     </View>
   );
 };

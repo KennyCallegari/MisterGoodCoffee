@@ -28,6 +28,8 @@ const App = () => {
       require('./assets/vegan.png'),
       require('./assets/routard.png'),
       require('./assets/coup_de_coeur.png'),
+      require('./assets/kofi_button.png'),
+      require('./assets/buy_me_a_coffee_button.png'),
     ];
     const imageAssets = cachedImages.map((img) => Asset.fromModule(img).downloadAsync());
 
