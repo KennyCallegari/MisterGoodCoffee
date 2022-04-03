@@ -27,6 +27,7 @@ const App = () => {
       require('./assets/carte_the.png'),
       require('./assets/vegan.png'),
       require('./assets/routard.png'),
+      require('./assets/coup_de_coeur.png'),
     ];
     const imageAssets = cachedImages.map((img) => Asset.fromModule(img).downloadAsync());
 

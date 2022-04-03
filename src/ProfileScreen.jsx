@@ -24,6 +24,7 @@ import ristrettoSource from '../assets/carte_ristretto.png';
 import theSource from '../assets/carte_the.png';
 import veganSource from '../assets/vegan.png';
 import routardSource from '../assets/routard.png';
+import cdcSource from '../assets/coup_de_coeur.png';
 
 const ProfileScreen = ({ route, navigation }) => {
   const { selectedCoffee } = route.params;
@@ -116,6 +117,8 @@ const ProfileScreen = ({ route, navigation }) => {
         <Text style={styles.menuTitle}>TAGS</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           {selectedCoffee.tags.includes('vegan') && <Image style={{ width: 80, height: 80 }} source={veganSource} />}
+          {selectedCoffee.tags.includes('coup_de_coeur')
+            && <Image style={{ width: 80, height: 80 }} source={cdcSource} />}
           {selectedCoffee.tags.includes('routard')
             && <Image style={{ width: 72, height: 72 }} source={routardSource} />}
         </View>
