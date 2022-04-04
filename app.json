@@ -2,9 +2,12 @@
   "expo": {
     "name": "Mister Good Coffee",
     "slug": "mister-good-coffee",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "primaryColor": "#E9D7C1",
     "icon": "./assets/ios_icon.png",
     "backgroundColor": "#FFFFFF",
@@ -16,13 +19,21 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["assets/*"],
+    "assetBundlePatterns": [
+      "assets/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.kennyCallegari.MisterGoodCoffee",
       "config": {
         "googleMapsApiKey": "AIzaSyC6T83G44a2Dy6XeCbULI--L_ujpGNdXqc"
       },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Autorisez l'accès à votre position pour pouvoir trouver les cafés autour de vous dans MisterGoodCoffee.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Autorisez l'accès à votre position pour pouvoir trouver les cafés autour de vous dans MisterGoodCoffee.",
+        "NSLocationAlwaysUsageDescription": "Autorisez l'accès à votre position pour pouvoir trouver les cafés autour de vous dans MisterGoodCoffee."
+      },
+      "buildNumber": "1.0.1",
       "icon": "./assets/ios_icon.png"
     },
     "android": {
@@ -30,7 +41,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/android_icon.png",
         "backgroundColor": "#E9D7C1"
-      }
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBgkhNXkfKraCIYTIHSIpO3wb0wtNslzEM"
+        }
+      },
+      "versionCode": 2,
+      "package": "com.kennyCallegari.MisterGoodCoffee"
     },
     "web": {
       "favicon": "./assets/favicon.png"
