@@ -2,7 +2,7 @@
   "expo": {
     "name": "Mister Good Coffee",
     "slug": "mister-good-coffee",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "platforms": [
       "ios",
@@ -33,7 +33,7 @@
         "NSLocationAlwaysAndWhenInUseUsageDescription": "Autorisez l'accès à votre position pour pouvoir trouver les cafés autour de vous dans MisterGoodCoffee.",
         "NSLocationAlwaysUsageDescription": "Autorisez l'accès à votre position pour pouvoir trouver les cafés autour de vous dans MisterGoodCoffee."
       },
-      "buildNumber": "1.0.1",
+      "buildNumber": "1.0.2",
       "icon": "./assets/ios_icon.png"
     },
     "android": {
@@ -47,8 +47,9 @@
           "apiKey": "AIzaSyBgkhNXkfKraCIYTIHSIpO3wb0wtNslzEM"
         }
       },
-      "versionCode": 2,
-      "package": "com.kennyCallegari.MisterGoodCoffee"
+      "versionCode": 3,
+      "package": "com.kennyCallegari.MisterGoodCoffee",
+      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
